@@ -1,0 +1,347 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.01, user-scalable=yes">
+		<title>Mega888 GameLog Generator</title>
+		<link rel="stylesheet" href="./res/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./res/dist/css/font-awesome.min.css">
+		<link rel="stylesheet" href="./res/dist/css/AdminLTE.css">
+		<link rel="stylesheet" href="./res/dist/css/skins/skin-blue.min.css">
+		<link rel="stylesheet" href="./res/css/page.css" type="text/css">
+		<!--<link rel="stylesheet" href="./res/js/plug/dialog/d1/skins/black.css">-->
+		<!--<link rel="stylesheet" href="./res/js/plug/sweetAlert/dist/sweetalert.css">-->
+		<!--[if lt IE 9]>
+												<script src="../res/dist/js/html5shiv.min.js" type="text/javascript"></script>
+												<script src="../res/dist/js/respond.min.js" type="text/javascript"></script>
+												<![endif]-->
+		<!--<link type="text/css" rel="stylesheet" href="https://gamelog.mega166.com/res/js/plug/laypage/laypage.css" id="laypagecss">-->
+		<link type="text/css" rel="stylesheet" href="./res/js/plug/laypage/laypage.css" id="laypagecss">
+		<style type="text/css">
+			#container-Gen {
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 20px;
+				border: 1px solid #ccc;
+				border-radius: 10px;
+				background-color: #f9f9f9;
+			}
+			input[type="text"] {
+				width: calc(100% - 16px);
+				padding: 8px;
+				border-radius: 4px;
+				border: 1px solid #ccc;
+			}
+			select, input[type="number"] {
+				width: 100%;
+				padding: 8px;
+				border-radius: 4px;
+				border: 1px solid #ccc;
+			}
+			button:disabled,
+			button[disabled]{
+				border: 1px solid #999999;
+				background-color: #cccccc;
+				color: #666666;
+				text-decoration: line-through;
+			}
+			button {
+				width: 100%;
+				padding: 10px;
+				background-color: #4CAF50;
+				color: white;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+				font-size: 16px;
+			}
+			button
+			button:hover {
+				background-color: #45a049;
+			}
+			.mb8 {
+				margin-bottom: 8px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="" style="display: none; position: absolute;">
+			<div class="aui_outer">
+				<table class="aui_border">
+					<tbody>
+						<tr>
+							<td class="aui_nw"></td>
+							<td class="aui_n"></td>
+							<td class="aui_ne"></td>
+						</tr>
+						<tr>
+							<td class="aui_w"></td>
+							<td class="aui_c">
+								<div class="aui_inner">
+									<table class="aui_dialog">
+										<tbody>
+											<tr>
+												<td colspan="2" class="aui_header">
+													<div class="aui_titleBar">
+														<div class="aui_title" style="cursor: move; display: block;"></div>
+														<a class="aui_close" onfocus="this.blur();" href="javascript:/*artDialog*/;" style="display: block;">×</a>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td class="aui_icon" style="display: none;">
+													<div class="aui_iconBg" style="background: none;"></div>
+												</td>
+												<td class="aui_main" style="width: 520px; height: 320px;">
+													<div class="aui_content  " style="padding: 20px 25px;"></div>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2" class="aui_footer">
+													<div class="aui_buttons" style="display: none;"></div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</td>
+							<td class="aui_e"></td>
+						</tr>
+						<tr>
+							<td class="aui_sw"></td>
+							<td class="aui_s"></td>
+							<td class="aui_se" style="cursor: se-resize;"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!--游戏记录列表 开始-->
+		<div class="box box-primary" id="tb_list_1">
+			<div class="box-header with-border">
+				<h3 class="box-title text-bold"> GameLog List - <span class="text-red">Bukhori lop Cindy celamanya yesslive angek kali</span> (✌️)</h3>
+				<div class="box-tools pull-right">
+					<button data-widget="collapse" class="btn btn-box-tool bg-green" type="button">
+						-
+					</button>
+				</div>
+			</div>
+			<div class="box-body" style="display: block;">
+				<div class="table-responsive">
+					<table class="table table-hover table-bordered" id="data_gameLog">
+						<thead>
+							<tr>
+								<th nowrap="nowrap">GameName</th>
+								<th nowrap="nowrap">TableID</th>
+								<th nowrap="nowrap">Bet</th>
+								<th nowrap="nowrap">Win</th>
+								<th nowrap="nowrap">BeginMoney</th>
+								<th nowrap="nowrap">EndMoney</th>
+								<th nowrap="nowrap">DateTime</th>
+							</tr>
+						</thead>
+						<tbody id="tblData">
+						</tbody>
+					</table>
+				</div>
+				<div id="container-Gen">
+					<form id="paymentForm">
+						<label for="gameName">Pilih Game mu Bujang:</label>
+						<select id="gameName" name="gameName">
+							<option value="GreatBlue">Great Blue</option>
+							<option value="Laura">Laura</option>
+							<option value="JinQianWa">JinQianWa</option>
+							<option value="Halloween">Halloween</option>
+							<option value="ShiningStars">ShiningStars</option>
+							<option value="MoneyFever">MoneyFever</option>
+							<option value="Samurai">Samurai</option>
+							<option value="BeatTheBeast">BeatTheBeast</option>
+							<option value="GoldenSlut">Golden Slut</option>
+							<option value="DarkVortex">DarkVortex</option>
+							<option value="DolphinReef">Dolphin Reef</option>
+							<option value="Boxing">Boxing</option>
+							<option value="FiveDragon">FiveDragon</option>
+							<option value="Aladdin">Aladdin</option>
+							<option value="StoneAge">StoneAge</option>
+							<option value="ICELAND">Iceland</option>
+							<option value="LotusLegend">Lotus Legend</option>
+							<option value="Twister">Twister</option>
+							<option value="Golden Lotus">Golden Lotus</option>
+							<option value="GoldenTour">Golden Tour</option>
+							<option value="SeaWorld">Sea World</option>
+							<option value="PatherMoon">Panther Moon</option>
+							<option value="India">Indian Myth</option>
+							<option value="EmperorGate">Emperor Gate</option>
+							<option value="CaiShenGold">Cai Shen Gold</option>
+							<option value="BonusBears">Bonus Bear</option>
+							<option value="JAPAN">Japan</option>
+							<option value="Victory">Victory</option>
+							<option value="GoldenBeauty">Golden Beauty</option>
+							<option value="FortunePanda">Fortune Panda</option>
+							<option value="Panda">Panda</option>
+							<option value="fish">fish</option>
+							<option value="Agent51">Agent 51</option>
+							<option value="Samurai">Samurai</option>
+							<option value="Roulette">Roulette</option>
+							<option value="Samurai">Princes Kori Starlight</option>
+						</select>
+						<div class="form-group">
+							<label for="vSetScore">Jangan banyak kali nampak tipunya :</label>
+							<input type="number" id="vSetScore" name="vSetScore" placeholder="Jumlah tarik point" required>
+						</div>
+						<button class="mb8" type="button" onclick="funSetScore()" id="btnSetScore">Set Score</button>
+						<table class="table table-hover table-bordered">
+							<thead>
+								<tr>
+									<th nowrap="nowrap">Bet</th>
+									<th nowrap="nowrap">Win</th>
+									<th nowrap="nowrap">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<input type="text" id="bet" name="bet" placeholder="Jmlh Bet">
+									</td>
+									<td>
+										<input type="text" id="win1" name="win1" placeholder="Jmlh Win">
+									</td>
+									<td>
+										<button type="button" onclick="addBet()" id="btnAddBet">Add</button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="text-red text-bold">Free game</span>
+									</td>
+									<td>
+										<input type="text" id="win2" name="win2" placeholder="Jmlh Win">
+									</td>
+									<td>
+										<button type="button" onclick="addFree()" id="btnAddFree">Add</button>
+									</td>
+								<tr>
+									<td>
+										<span class="text-red text-bold">JackPot</span>
+									</td>
+									<td>
+										<input type="text" id="win2" name="win2" placeholder="Jmlh Win">
+									</td>
+									<td>
+										<button type="button" onclick="addFree()" id="btnAddFree">Add</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+				</div>
+				<!--Pager-->
+				<!--<div id="pager_gameLogList" class="pull-left" style="display: block;">
+					<div name="laypage1.3" class="laypage_main laypageskin_molv" id="laypage_9">
+						<span class="laypage_curr" style="background-color:#00AA91">1</span>
+						<a href="javascript:;" data-page="2">2</a>
+						<a href="javascript:;" data-page="3">3</a>
+						<a href="javascript:;" data-page="4">4</a>
+						<a href="javascript:;" data-page="5">5</a>
+						<span>…</span>
+						<a href="javascript:;" class="laypage_last" title="尾页" data-page="82">82</a>
+						<a href="javascript:;" class="laypage_next" data-page="2">&gt;</a>
+						<span class="laypage_total">
+							<label>jump to</label>
+							<input type="number" min="1" onkeyup="this.value=this.value.replace(/\D/, '');" class="laypage_skip">
+							<label>page</label>
+							<button type="button" class="laypage_btn">GO</button>
+						</span>
+					</div>
+				</div>-->
+				<div class="overlay" id="overlay_gameLog" style="display: none;">
+					<i class="fa fa-refresh fa-spin"></i>
+				</div>
+			</div>
+		</div>
+		<!--游戏记录列表 结束-->
+		<script src="./res/js/common/jquery-1.11.3.min.js"></script>
+		<script src="./res/dist/js/bootstrap.min.js"></script>
+		<script src="./res/dist/js/app.min.js"></script>
+		<script src="./res/js/common/Function.js"></script>
+		<script src="./res/js/plug/dialog/d1/artDialog.js"></script>
+		<script src="./res/js/plug/dialog/iframe/iframeTools.source.js" type="text/javascript"></script>
+		<script src="./res/js/plug/laypage/laypage.js" type="text/javascript"></script>
+		<script src="./moment.js" type="text/javascript"></script>
+		<!--<script src="./res/js/plug/sweetAlert/dist/sweetalert.min.js" type="text/javascript"></script>-->
+		<script>
+			var vTime = new Date();
+			var sTime = "";
+			var options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', hour12:false, minute: '2-digit', second: '2-digit' };
+			var endMoney = 0;
+			var beginMoney = 0;
+
+			function addBet() {
+				const gameName = document.getElementById("gameName").value;
+				var bet = parseFloat(document.getElementById("bet").value) || 0;
+				bet = bet.toFixed(2);
+				var win = parseFloat(document.getElementById("win1").value) || 0;
+				win = win.toFixed(2);
+				if (win > bet) {
+					var showBMoney = endMoney - (win - bet);
+				} else {
+					var showBMoney = endMoney + (bet - win);
+				}
+				beginMoney = showBMoney;
+				vTime.setTime(vTime.getTime() - (Math.floor(Math.random() * 8) + 3) * 1000);
+				sTime = vTime.toLocaleDateString('en-CA', options).replace(",", "");
+				const rowBet = `<tr class=\"tr_h\" data-classid=\"3\" data-linenum=\"25\" data-roundno=\"0\" data-tableid=\"0\" data-gamename=\"SeaWorld\" data-logtime=\"2024-11-11 03:10:56\" data-logstr=\"1.00,0.00,108.18,3,2,4,5,6,1,2,10,5,3,10,2,7,3,2,0.04,25,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,2,0.00,0\" id=\"194710\"><td id=\"162\">${gameName}</td><td><span class=\"badge bg-gray\">0</span></td><td>${bet}</td><td>${win}</td><td>${showBMoney.toFixed(2)}</td><td>${endMoney.toFixed(2)}</td><td>${sTime}</td></tr>`;
+				document.getElementById('tblData').insertAdjacentHTML('beforeend', rowBet);
+				endMoney = beginMoney;
+			}
+			function addFree() {
+				const gameName = document.getElementById("gameName").value;
+				var win = parseFloat(document.getElementById("win2").value) || 0;
+				win = win.toFixed(2);
+				var showBMoney = endMoney - win;
+				beginMoney = showBMoney;
+				vTime.setTime(vTime.getTime() - (Math.floor(Math.random() * 8) + 3) * 1000);
+				sTime = vTime.toLocaleDateString('en-CA', options).replace(",", "");
+				const rowFree = `<tr class=\"tr_h\" data-classid=\"3\" data-linenum=\"25\" data-roundno=\"0\" data-tableid=\"0\" data-gamename=\"SeaWorld\" data-logtime=\"2024-11-11 03:10:02\" data-logstr=\"1.00,1.80,108.38,7,1,2,9,8,7,5,6,9,3,9,7,7,9,6,0.04,25,0.00,0.00,0.60,0.00,0.00,0.00,0.00,0.00,0.60,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.60,0.00,0.00,0.00,0.00,0.00,0,0.00,0\" id=\"194025\"><td id=\"162\">${gameName}</td><td><span class=\"badge bg-gray\">0</span></td><td><span class=\"text-red text-bold\">Free game</span></td><td>${win}</td><td>${showBMoney.toFixed(2)}</td><td>${endMoney.toFixed(2)}</td><td>${sTime}</td></tr>`;
+				document.getElementById('tblData').insertAdjacentHTML('beforeend', rowFree);
+				endMoney = beginMoney;
+			}
+			function funSetScore() {
+				var jmlhSet = parseFloat(document.getElementById("vSetScore").value) || 0;
+				endMoney = jmlhSet + Math.random();
+				sTime = vTime.toLocaleDateString('en-CA', options).replace(",", "");
+				const rowSetScore = `<tr class=\"tr_h\" id=\"-1\"><td>-</td><td><span class=\"text-red text-bold\" id=\"setScore\">Set score：-${jmlhSet}.00</span></td><td><span class=\"text-red text-bold\">-</span></td><td><span class=\"text-red text-bold\">-</span></td><td><span class=\"text-red text-bold\">-</span></td><td><span class=\"text-red text-bold\">-</span></td><td>${sTime}</td></tr>`;
+				document.getElementById('tblData').insertAdjacentHTML('beforeend', rowSetScore);
+				vTime.setTime(vTime.getTime() - (Math.floor(Math.random() * 6) * 60) * 1000);
+				$("#vSetScore").prop("disabled", true)
+				$("#btnSetScore").prop("disabled", true)
+				$("#bet").focus();
+			}
+			$("#vSetScore").keyup(function(event){
+				if(event.keyCode == 13){
+					$("#btnSetScore").click();
+				}
+			});
+			$("#win1").keyup(function(event){
+				if(event.keyCode == 13){
+					$("#btnAddBet").click();
+					$("#win1").val("");
+				}
+			});
+			$("#win2").keyup(function(event){
+				if(event.keyCode == 13){
+					$("#btnAddFree").click();
+					$("#win2").val("");
+				}
+			});
+			//for (let i = 0; i < 50; i++) {
+			//	document.getElementById('tblData').insertAdjacentHTML('beforeend', betRow[Math.floor(Math.random() * betRow.length)]);
+			//}
+			//console.log(rowBet);
+			//console.log(rowFree);
+			//document.getElementById('tblData').insertAdjacentHTML('beforeend', rowBet);
+			//document.querySelectorAll("[id='162']").forEach(e => e.innerHTML = 'GreatBlue');
+		</script>
+		<div style="display: none; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; cursor: move; opacity: 0; background: rgb(255, 255, 255);"></div>
+	</body>
+</html>
